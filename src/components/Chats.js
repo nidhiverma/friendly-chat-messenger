@@ -1,10 +1,15 @@
 import React from 'react';
 import { ChatEngine } from 'react-chat-engine';
 import { useHistory } from 'react-router-dom';
+import { useAuth } from '../contexts/AuthContext';
 import { auth } from '../firebase';
 
 const Chats = () => {
   const history = useHistory();
+  const { user } = useAuth();
+
+  console.log(user);
+
   const handleLogout = async () => {
     await auth.signOut();
     history.push('/');
@@ -19,8 +24,7 @@ const Chats = () => {
       </div>
       <ChatEngine
         height='calc(100vh - 66px)'
-        projectId='
-f60faabf-2917-420d-bd08-d73f5a14f220'
+        projectId='f60faabf-2917-420d-bd08-d73f5a14f220'
         userName='.'
         userSecret='.'
       />
